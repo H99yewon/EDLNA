@@ -23,7 +23,7 @@ NMF <- function(A, k, max_iter = 500, eps = 1e-9) {
   list(W = best_W, H = best_H, rss = best_rss)
 }
 
-NMF_fixed_H <- function(A, H, max_iter = 500, eps = 1e-9) {
+NMF_fixed_H <- function(A, H, k, max_iter = 500, eps = 1e-9) {
   N <- nrow(A); k <- nrow(H)
   W <- matrix(runif(N * k), N, k)
   
