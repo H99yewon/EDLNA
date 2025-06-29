@@ -7,10 +7,10 @@ NMF <- function(A, k, max_iter = 500, eps = 1e-9) {
   best_rss <- sum((A - W %*% H)^2)
   
   for (iter in 1:max_iter) {
-    # H 업데이트
+    # H update
     H <- H * ((t(W) %*% A) / (t(W) %*% W %*% H + eps))
     
-    # W 업데이트
+    # W update
     W <- W * ((A %*% t(H)) / (W %*% H %*% t(H) + eps))
     
     rss <- sum((A - W %*% H)^2)
@@ -31,7 +31,7 @@ NMF_fixed_H <- function(A, H, max_iter = 500, eps = 1e-9) {
   best_rss <- sum((A - W %*% H)^2)
   
   for (iter in 1:max_iter) {
-    # W 업데이트 (H 고정)
+    # W update (H is fixed)
     W <- W * ((A %*% t(H)) / (W %*% H %*% t(H) + eps))
     
     rss <- sum((A - W %*% H)^2)
@@ -46,7 +46,6 @@ NMF_fixed_H <- function(A, H, max_iter = 500, eps = 1e-9) {
 
 # exnormal, extumor: m × n matrix
 # k: latent factor 
-
 
 # normal tissue NMF
 nmf_normal <- NMF(exnormal, k = k)
